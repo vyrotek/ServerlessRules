@@ -10,7 +10,7 @@
 curl --location --request POST 'http://serverless-rules.azurewebsites.net/api/HttpEvaluator' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-    "Rule": "testrule",
+    "Rule": "basic.js",
     "Input": {
         "a": 10,
         "b": 5
@@ -18,7 +18,8 @@ curl --location --request POST 'http://serverless-rules.azurewebsites.net/api/Ht
 }'
 ```
 
-## Rule Code
+## Rule Code (From Blob)
+[https://serverlessrules.blob.core.windows.net/rules/basic.js](https://serverlessrules.blob.core.windows.net/rules/basic.js)
 ```
 function run(input) {
   const z = (input.a + input.b); 
