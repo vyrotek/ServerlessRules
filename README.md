@@ -5,7 +5,7 @@
 [aka.ms/serverlesscontestrules](aka.ms/serverlesscontestrules)
 
 
-## Rule Input
+## Rule Input - From Request
 ```
 curl --location --request POST 'http://serverless-rules.azurewebsites.net/api/HttpEvaluator' \
 --header 'Content-Type: application/json' \
@@ -18,7 +18,7 @@ curl --location --request POST 'http://serverless-rules.azurewebsites.net/api/Ht
 }'
 ```
 
-## Rule Code (From Blob)
+## Rule Code - From Blob
 [https://serverlessrules.blob.core.windows.net/rules/basic.js](https://serverlessrules.blob.core.windows.net/rules/basic.js)
 ```
 function run(input) {
