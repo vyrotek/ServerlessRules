@@ -2,9 +2,9 @@
 
 Jason Barnes
 
-[aka.ms/serverlesscontest](aka.ms/serverlesscontest)
+[https://aka.ms/serverlesscontest](https://aka.ms/serverlesscontest)
 
-[aka.ms/serverlesscontestrules](aka.ms/serverlesscontestrules)
+[https://aka.ms/serverlesscontestrules](https://aka.ms/serverlesscontestrules)
 
 ---
 ## Summary
