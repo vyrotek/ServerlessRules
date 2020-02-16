@@ -10,24 +10,26 @@ using System.Text.Json;
 
 namespace Rules.Functions
 {
-    public static class HttpEvaluator
+    public static class RuleEvaluator
     {
-        private static string code = "function run(input) { const z = (input.a + input.b); return { result : z }; }";
-
-        [FunctionName("HttpEvaluator")]
+        [FunctionName("RuleEvaluator")]
         public static async Task<ActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = null)] HttpRequest req, ILogger logger)
         {
+            // Read request
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+            var request = JsonSerializer.Deserialize<RuleEvaluatorRequest>(requestBody);
 
-            var request = JsonSerializer.Deserialize<HttpEvaluatorRequest>(requestBody);
-            
+            // Download rule code
+            var storage = new Storage();
+            var code = await storage.DownloadBlobTextAsync("rules", request.Rule);
+
+            // Evaluate code through engine
             var engine = new Engine(logger);
-
             var result = engine.Evaluate(code, request.Input);
 
+            // Return result
             var json = result.GetRawText();
-
             return new ContentResult() { Content = json, ContentType = "text/json" };
         }
     }

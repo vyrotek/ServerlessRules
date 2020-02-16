@@ -5,7 +5,7 @@ using System.Text.Json;
 
 namespace Rules.Functions
 {
-    public class HttpEvaluatorRequest
+    public class RuleEvaluatorRequest
     {
         public string Rule { get; set; }
         public JsonElement Input { get; set; }

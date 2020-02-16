@@ -20,6 +20,7 @@ namespace Rules.Functions
 
         public JsonElement Evaluate(string code, JsonElement input)
         {
+            // Create a JS engine with some sandbox limits
             var engine = new Jint.Engine(options =>
             {
                 options
@@ -27,16 +28,13 @@ namespace Rules.Functions
                 .TimeoutInterval(new TimeSpan(0, 0, 3));
             });
             
-            engine.SetValue("log", new Action<object>((message) =>
-            {
-                _logger.LogDebug("Jint Log", message);
-            }));
-
             var jsonParser = new JsonParser(engine);
             var jintInput = jsonParser.Parse(input.ToString());
 
+            // Go!
             engine.Execute(code);
 
+            // Parse engine result object into json
             var result = engine.Invoke("run", jintInput);
             var stringResult = engine.Json.Stringify(result, Jint.Runtime.Arguments.From(result)).ToString();
             return JsonDocument.Parse(stringResult).RootElement;
