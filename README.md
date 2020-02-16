@@ -1,5 +1,7 @@
 # Serverless Rules!
 
+Jason Barnes
+
 [aka.ms/serverlesscontest](aka.ms/serverlesscontest)
 
 [aka.ms/serverlesscontestrules](aka.ms/serverlesscontestrules)
@@ -8,10 +10,13 @@
 ## Summary
 
 ### What?
-* Serverless-rules allows you to evaluate externally stored javascript.
+* Serverless-rules allows you to evaluate externally stored javascript logic.
+
+### How?
+* Serverless-rules uses [JINT](https://github.com/sebastienros/jint) to evaluate a JS file from Azure Blob Storage based on the Rule value specified. The data sent in the Input is used as function arguments.
 
 ### Why?
-* A script file can represent anything. In the examples below each script represents a basic 'rule' that evaluates the input sent to the function through the JS engine and returns a result. It could also be used to create "*smart*" mock APIs and much more!
+* A script file can represent anything. In the examples below each script represents a basic 'rule' that evaluates the input sent to the function through the JS engine and returns a result. A business may use it to evaluate/filter incoming data and decide what to do with it. It could also be used to create "*smart*" mock APIs and much more!
 * It's like an *executable* gist or pastebin.
 
 ### Next?
