@@ -13,7 +13,7 @@ namespace Rules.Functions
         
         public Storage()
         {
-            var connString = Environment.GetEnvironmentVariable("ConnectionStrings:storage");
+            var connString = Environment.GetEnvironmentVariable("storage");
             
             if (string.IsNullOrWhiteSpace(connString))
                 throw new ArgumentNullException("ConnectionStrings.Storage", "Config missing Azure Storage Connection String 'Storage'");
