@@ -33,9 +33,9 @@ namespace Rules.Functions
 
             // Go!
             engine.Execute(code);
-
-            // Parse engine result object into json
             var result = engine.Invoke("run", jintInput);
+            
+            // Parse engine result object into json            
             var stringResult = engine.Json.Stringify(result, Jint.Runtime.Arguments.From(result)).ToString();
             return JsonDocument.Parse(stringResult).RootElement;
         }
